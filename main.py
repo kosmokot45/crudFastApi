@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/", response_class=FileResponse)
 def read_root():
-    html_content = "<h2>Hello FastApi</h2>"
-    return HTMLResponse(content=html_content)
+    path = "public/index.html"
+    return path
 
