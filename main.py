@@ -45,3 +45,35 @@ def read_root():
 # @app.get("#")
 # def func_func():
 #     return("#func#") 
+
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#") 
+
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#") 
