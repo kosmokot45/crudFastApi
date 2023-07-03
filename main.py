@@ -25,3 +25,23 @@ def read_root():
 # @app.get("/userss")
 # def get_model(name, age: int = Query(ge=18)):
 #     return {"user_name": name, "user_age": age}
+
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#")
+# 
+# @app.get("#")
+# def func_func():
+#     return("#func#") 
