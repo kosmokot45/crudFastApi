@@ -1,79 +1,47 @@
-from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, Request, Depends, Form, status
+from fastapi.templating import Jinja2Templates
+import models
+from db import engine, sessionlocal
+from sqlalchemy.orm import Session
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+
+models.Base.metadata.create_all(bind=engine)
+templates = Jinja2Templates()
 
 app = FastAPI()
 
-@app.get("/", response_class=FileResponse)
-def read_root():
-    path = "public/index.html"
-    return path
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# @app.get("/user/admin")
-# def user_admin():
-#     return("Admin") 
 
-# @app.get("/user/{name}/{age}/{id}")
-# def users(name: str = Path(min_length=2, max_length=20),
-#           age: int = Path(ge=18, lt=111),
-#           id: int = Path(ge=1)):
-#     return {"name":name,"age":age,"id":id}
+def get_db():
+    db = sessionlocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-# @app.get("/users")
-# def get_model(name: str = "undef", age: int = 18):
-#     return {"user_name": name, "user_age": age}
 
-# @app.get("/userss")
-# def get_model(name, age: int = Query(ge=18)):
-#     return {"user_name": name, "user_age": age}
+@app.get("/")
+async def home(request: Request, db: Session = Depends(get_db)):
+    ...
 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#") 
 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#") 
+@app.get("/add")
+async def add_user(reques: Request, name: str = Form(...), salary: int = Form(...), db: Session = Depends(get_db)):
+    ...
 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#")
-# 
-# @app.get("#")
-# def func_func():
-#     return("#func#") 
+
+@app.get("/delete/{user_id}")
+async def delete_user():
+    ...
+
+
+@app.get("/update/{user_id}")
+async def update_user():
+    ...
+
+
+@app.get("/edit/{user_id}")
+async def edit_user():
+    ...
